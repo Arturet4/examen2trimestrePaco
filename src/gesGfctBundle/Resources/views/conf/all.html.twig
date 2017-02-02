@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+  {% block body %}
+  <h1>GFCT</h1><br>
+  <div class="panel panel-default">
+    <div class="panel-heading">Listado de Conf</div>
+      <table class="table">
+        <tr>
+          <th><b>id</b></th>
+          <td><b>param</b></td>
+          <td><b>configuracion</b></td>
+
+        </tr>
+        {% for conf1 in NumConf %}
+        <tr>
+          <th>{{ conf1.id}}</th>
+          <td>{{ conf1.param }}</td>
+          <td>{{ conf1.configuracion }}</td>
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    </body>
+    {% endblock %}

@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+  {% block body %}
+  <h1>GFCT</h1><br>
+  <div class="panel panel-default">
+    <div class="panel-heading">Listado de Empresa</div>
+      <table class="table">
+        <tr>
+          <th><b>id</b></th>
+          <td><b>nombre</b></td>
+          <td><b>direccion</b></td>
+          <td><b>codigopostal</b></td>
+          <td><b>telefono1</b></td>
+          <td><b>telefono2</b></td>
+          <td><b>fechaCreacion</b></td>
+
+        </tr>
+        {% for empresa1 in NumEmpresas %}
+        <tr>
+          <th>{{ empresa1.id}}</th>
+          <td>{{ empresa1.nombre }}</td>
+          <td>{{ empresa1.direccion }}</td>
+          <td>{{ empresa1.cp }}</td>
+          <td>{{ empresa1.telefono1 }}</td>
+          <td>{{ empresa1.telefono2 }}</td>
+          <td>{{ empresa1.fechaCreacion.date }}</td>
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    </body>
+    {% endblock %}

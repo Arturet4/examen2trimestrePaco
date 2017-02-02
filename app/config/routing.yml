@@ -1,0 +1,7 @@
+ges_gfct:
+    resource: "@gesGfctBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

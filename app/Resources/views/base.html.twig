@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}GFCT{% endblock %}</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen" title="no title">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" media="screen" title="no title">
+        <link rel="stylesheet" href="{{asset('css/simple-sidebar.css')}}" media="screen" title="no title">
+      {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+
+        <div id="wrapper">
+
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#">
+                            Gestor de Empresas
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{asset('/empresa/all')}}">Empresas</a>
+                    </li>
+                    <li>
+                        <a href="{{asset('/alumno/all')}}">Alumnos</a>
+                    </li>
+                    <li>
+                        <a href="{{asset('/empresa/new')}}">Crear Empresa</a>
+                    </li>
+                    
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+
+                    <li>
+                        <a href="{{asset('/conf/all')}}">Listado de conf</a>
+                    </li>
+
+                    {% endif %}
+
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+
+                    <li>
+                        <a href="{{asset('/conf/new')}}">Crear conf</a>
+                    </li>
+
+                    {% endif %}
+
+                    {% if is_granted('ROLE_ADMIN') %}
+
+                    <li>
+                        <a href="{{asset('/admin')}}">ADMIN</a>
+                    </li>
+
+                    {% endif %}
+
+
+
+                </ul>
+            </div>
+            <!-- /#sidebar-wrapper -->
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        {% block body %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+        <!-- Menu Toggle Script -->
+        <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+        </script>
+
+    </body>
+        {% block javascripts %}{% endblock %}
+</html>
